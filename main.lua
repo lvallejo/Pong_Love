@@ -53,11 +53,14 @@ function love.update(dt)
 
 
     -- logic for paddle 2 ( CPU )
-    if(paddle2Y > ballY - 10) then
-    	paddle2Y = paddle2Y + dt * -60
-    end
-    if(paddle2Y < ballY - 10) then
-    	paddle2Y = paddle2Y + dt * 60
+    if(ballVelocityX > 0) then
+
+    	if(paddle2Y + paddle2:getHeight() / 2 > ballY) then
+    		paddle2Y = paddle2Y - dt * 60
+    	end
+    	if(paddle2Y + paddle2:getHeight() / 2 < ballY ) then
+    		paddle2Y = paddle2Y + dt * 60
+    	end
     end
 
 
